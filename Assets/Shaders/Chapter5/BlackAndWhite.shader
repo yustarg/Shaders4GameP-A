@@ -14,6 +14,11 @@
 
 			sampler2D _MainTex;
 
+			static float4x4 color_filter = { 0.299,0.587,0.184,0,
+				0.299,0.587,0.184,0,
+				0.299,0.587,0.184,0,
+				0,0,0,1 };
+
 			struct v2f {
 				float4 pos : POSITION; 
 				float2 uv : TEXCOORD0;
@@ -29,11 +34,6 @@
 
 			fixed4 frag(v2f IN) : COLOR
 			{	
-				float4x4 color_filter = { 0.299,0.587,0.184,0,
-				0.299,0.587,0.184,0,
-				0.299,0.587,0.184,0,
-				0,0,0,1 };
-
 				fixed4 original = tex2D(_MainTex, IN.uv);
 				//float intensity = dot(original, color_filter[0]);
 				return mul(color_filter, original);
