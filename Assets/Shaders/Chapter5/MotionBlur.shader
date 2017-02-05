@@ -81,8 +81,8 @@
 				return col;
 			}
 
-				ENDCG
-			}
+			ENDCG
+		}
 	}
 	FallBack "Diffuse"
 }
