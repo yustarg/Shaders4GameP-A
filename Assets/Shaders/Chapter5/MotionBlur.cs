@@ -4,7 +4,7 @@ using System.Collections;
 public class MotionBlur : MonoBehaviour {
 
     public Material mat;
-    private RenderTexture accumTexture;
+    public RenderTexture accumTexture;
 
     void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
@@ -15,7 +15,7 @@ public class MotionBlur : MonoBehaviour {
             accumTexture.hideFlags = HideFlags.HideAndDontSave;
             Graphics.Blit(src, accumTexture);
         }
-        mat.SetTexture("_MainTex", src);
+        //mat.SetTexture("_MainTex", src);
         Graphics.Blit(src, accumTexture, mat);
         Graphics.Blit(accumTexture, dest);
     }
